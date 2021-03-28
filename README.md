@@ -2,6 +2,12 @@
 
 An example REST API server using Spring Boot.
 
+## API
+
+[OpenAPI yml](openapi.yml)
+
+[ReDoc Demo Link](http://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/rulyox/spring-boot-rest-api/master/openapi.yml)
+
 ## Usage
 
 ```shell

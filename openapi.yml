@@ -1,0 +1,175 @@
+openapi: 3.0.3
+
+info:
+  title: Spring Boot REST API Server
+  version: 1.0.0
+  description: An example REST API server using Spring Boot.
+
+servers:
+  - url: http://localhost:8080
+
+tags:
+  - name: user
+  - name: post
+
+paths:
+
+  # user
+
+  /user/id:
+    get:
+      summary: GET /user/id
+      description: Get user by id.
+      parameters:
+        - name: id
+          description: Id of user.
+          in: query
+          schema:
+            type: number
+          example: 3
+          required: true
+          allowEmptyValue: false
+      responses:
+        200:
+          description: Corresponding user.
+          content:
+            application/json:
+              example:
+                name: rulyox
+                age: 20
+        404:
+          description: User not found.
+      tags:
+        - user
+
+  /user/all:
+    get:
+      summary: GET /user/all
+      description: Get all users.
+      responses:
+        200:
+          description: List of users.
+          content:
+            application/json:
+              example:
+                - name: Alice
+                  age: 20
+                - name: Bob
+                  age: 25
+      tags:
+        - user
+
+  /user/add:
+    post:
+      summary: POST /user/add
+      description: Add user.
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: rulyox
+              age: 20
+        required: true
+      responses:
+        200:
+          description: Added user id.
+          content:
+            application/json:
+              example:
+                id: 3
+      tags:
+        - user
+
+  /user/count:
+    get:
+      summary: GET /user/count
+      description: Get user count.
+      responses:
+        200:
+          description: Number of users.
+          content:
+            application/json:
+              example:
+                count: 3
+      tags:
+        - user
+
+  # post
+
+  /post/id:
+    get:
+      summary: GET /post/id
+      description: Get post by id.
+      parameters:
+        - name: id
+          description: Id of post.
+          in: query
+          schema:
+            type: number
+          example: 3
+          required: true
+          allowEmptyValue: false
+      responses:
+        200:
+          description: Corresponding post.
+          content:
+            application/json:
+              example:
+                user: 3
+                text: New post
+        404:
+          description: Post not found.
+      tags:
+        - post
+
+  /post/all:
+    get:
+      summary: GET /post/all
+      description: Get all post.
+      responses:
+        200:
+          description: List of posts.
+          content:
+            application/json:
+              example:
+                - user: 1
+                  text: Hello World!
+                - user: 2
+                  text: Add post test
+      tags:
+        - post
+
+  /post/add:
+    post:
+      summary: POST /post/add
+      description: Add post.
+      requestBody:
+        content:
+          application/json:
+            example:
+              user: 3
+              text: New post
+        required: true
+      responses:
+        200:
+          description: Added post id.
+          content:
+            application/json:
+              example:
+                id: 3
+      tags:
+        - post
+
+  /post/count:
+    get:
+      summary: GET /post/count
+      description: Get post count.
+      responses:
+        200:
+          description: Number of posts.
+          content:
+            application/json:
+              example:
+                count: 3
+      tags:
+        - post
